@@ -1,7 +1,11 @@
 class Validator {
+  static const invalidEmailError = 'Please enter a valid email address';
+  static const passwordLengthError = 'Password minimum length: 8 characters';
+  static const requiredFieldError = 'Required field';
+
   static String? validateEmail(String email) {
     if (email.isEmpty) {
-      return 'Required field';
+      return requiredFieldError;
     }
 
     const pattern =
@@ -10,7 +14,7 @@ class Validator {
     final regExp = RegExp(pattern);
 
     if (!regExp.hasMatch(email)) {
-      return 'Please enter a valid email address';
+      return invalidEmailError;
     }
 
     return null;
@@ -18,11 +22,11 @@ class Validator {
 
   static String? validatePassword(String password) {
     if (password.isEmpty) {
-      return 'Required field';
+      return requiredFieldError;
     }
 
     if (password.length < 8) {
-      return 'Password minimum length: 8 characters';
+      return passwordLengthError;
     }
 
     return null;

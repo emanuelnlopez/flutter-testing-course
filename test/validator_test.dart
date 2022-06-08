@@ -6,14 +6,14 @@ void main() {
     // Arrange & Act
     var result = Validator.validateEmail('');
     // Assert
-    expect(result, 'Required field');
+    expect(result, Validator.requiredFieldError);
   });
 
   test('Validate for invalid email address', () {
     // Arrange & Act
     var result = Validator.validateEmail('qwerty');
     // Assert
-    expect(result, 'Please enter a valid email address');
+    expect(result, Validator.invalidEmailError);
   });
 
   test('Validate for valid email address', () {
@@ -26,7 +26,7 @@ void main() {
     // Arrange & Act
     var result = Validator.validatePassword('');
     // Assert
-    expect(result, 'Required field');
+    expect(result, Validator.requiredFieldError);
   });
 
   test('Validate for short password', () {
