@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unit_tests/validator.dart';
+import 'package:testing/validator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

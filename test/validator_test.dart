@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_unit_tests/validator.dart';
+import 'package:testing/validator.dart';
 
 void main() {
   test('Validate for empty email address', () {
