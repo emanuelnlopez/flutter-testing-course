@@ -15,7 +15,7 @@ void main() {
       );
 
       // Act
-      Finder title = find.text('Login');
+      final title = find.text('Login');
 
       // Assert
       expect(title, findsOneWidget);
@@ -33,7 +33,7 @@ void main() {
       );
 
       // Act
-      Finder emailTextField = find.byKey(
+      final emailTextField = find.byKey(
         const ValueKey('email'),
       );
 
@@ -53,7 +53,7 @@ void main() {
       );
 
       // Act
-      Finder passTextField = find.byKey(
+      final passTextField = find.byKey(
         const ValueKey('pass'),
       );
 
@@ -73,7 +73,7 @@ void main() {
       );
 
       // Act
-      Finder loginButton = find.byType(ElevatedButton);
+      final loginButton = find.byType(ElevatedButton);
 
       // Assert
       expect(loginButton, findsOneWidget);
@@ -91,13 +91,13 @@ void main() {
       );
 
       // Act
-      Finder loginButton = find.byType(ElevatedButton);
+      final loginButton = find.byType(ElevatedButton);
 
       await tester.tap(loginButton);
       // Wait for UI updates (animations)
       await tester.pumpAndSettle();
 
-      Finder errorText = find.text(Validator.requiredFieldError);
+      final errorText = find.text(Validator.requiredFieldError);
 
       // Assert
       expect(errorText, findsNWidgets(2));
@@ -126,7 +126,7 @@ void main() {
       // Wait for UI updates (animations)
       await tester.pumpAndSettle();
 
-      Finder errorText = find.text(Validator.invalidEmailError);
+      final errorText = find.text(Validator.invalidEmailError);
 
       // Assert
       expect(errorText, findsNWidgets(1));
@@ -155,10 +155,45 @@ void main() {
       // Wait for UI updates (animations)
       await tester.pumpAndSettle();
 
-      Finder errorText = find.text(Validator.passwordLengthError);
+      final errorText = find.text(Validator.passwordLengthError);
 
       // Assert
       expect(errorText, findsNWidgets(1));
+    },
+  );
+
+  testWidgets(
+    'Should submit form when mail and pass are valid',
+    (tester) async {
+      // Arrange
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: LoginScreen(),
+        ),
+      );
+
+      // Act
+      final loginButton = find.byType(ElevatedButton);
+
+      final emailTextField = find.byKey(
+        const ValueKey('email'),
+      );
+
+      final passTextField = find.byKey(
+        const ValueKey('pass'),
+      );
+
+      await tester.enterText(emailTextField, 'user@email.com');
+      await tester.enterText(passTextField, '12345678');
+      await tester.tap(loginButton);
+
+      // Wait for UI updates (animations)
+      await tester.pumpAndSettle();
+
+      final errorText = find.text(Validator.requiredFieldError);
+
+      // Assert
+      expect(errorText, findsNothing);
     },
   );
 }
