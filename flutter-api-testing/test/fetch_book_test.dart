@@ -14,6 +14,10 @@ void main() {
     mockClient = MockClient();
   });
 
+  tearDown(() {
+    mockClient.close();
+  });
+
   group('Fetch book API call test', () {
     test('Should return a list of books for http success call', () async {
       // Arrange
