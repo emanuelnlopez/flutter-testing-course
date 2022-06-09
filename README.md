@@ -33,7 +33,7 @@ we follow this structure no matter if we are writing a Unit Test, a Widget Test 
 
 #### TDD: Test Driven Development Life Cycle
 
-![TDD Lifecycle](extras/tdd_lifecyle.png)
+<img width="250" src="extras/tdd_lifecycle.png">
 
 - In TDD we write our test before writing any functionality
 - Functionality Driven Development: We have a requirement and we start working towards that requirement. We write our code driven to that functionality.
