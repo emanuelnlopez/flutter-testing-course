@@ -21,21 +21,21 @@ Future<List<BooksListModel>> fetchBooks(http.Client client) async {
 
 class BooksListModel {
   BooksListModel({
-    required this.name,
+    this.amazon,
     required this.auther,
-    required this.decription,
-    required this.amazon,
+    this.decription,
+    required this.name,
   });
 
-  String name;
+  String? amazon;
   String auther;
-  String decription;
-  String amazon;
+  String? decription;
+  String name;
 
   factory BooksListModel.fromJson(Map<String, dynamic> json) => BooksListModel(
-        name: json["name"],
+        amazon: json["amazon"],
         auther: json["auther"],
         decription: json["decription"],
-        amazon: json["amazon"],
+        name: json["name"],
       );
 }
